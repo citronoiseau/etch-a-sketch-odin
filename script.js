@@ -55,6 +55,7 @@ function activeEraseBtn() {
   randomBtn.classList.remove("active");
   eraseBtn.classList.add("active");
   isDrawing = false;
+  isRandomColor = false;
 }
 eraseBtn.addEventListener(`click`, activeEraseBtn);
 
@@ -69,7 +70,9 @@ function activeRandomBtn() {
 randomBtn.addEventListener(`click`, activeRandomBtn);
 function changeGridSize() {
   size = prompt(`Enter a grid size:`);
-  if (size > 100) {
+  if (size === null || size === "") {
+    alert(`Please enter a value!`);
+  } else if (size > 100) {
     alert(`It's too big, enter another size!`);
   } else if (size < 1) {
     alert(`It's too small, enter another size!`);
