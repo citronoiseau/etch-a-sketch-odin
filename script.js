@@ -9,7 +9,8 @@ const drawBtn = document.querySelector(`#colorMode`);
 const eraseBtn = document.querySelector(`#eraserMode`);
 const randomBtn = document.querySelector(`#randomMode`);
 const darkenBtn = document.querySelector(`#darkenMode`);
-const buttons = [drawBtn, eraseBtn, randomBtn, darkenBtn];
+const lightenBtn = document.querySelector(`#lightenMode`);
+const buttons = [drawBtn, eraseBtn, randomBtn, darkenBtn, lightenBtn];
 
 let drawingMode = "drawing";
 
@@ -52,6 +53,15 @@ function changeColor(event) {
       newDarkness = 0;
     }
     event.target.style.filter = `brightness(${newDarkness})`;
+  } else if (drawingMode === "lighten") {
+    let currentLightness;
+    if (event.target.style.filter) {
+      currentLightness = parseFloat(event.target.style.filter.slice(11, -1));
+    } else {
+      currentLightness = 1;
+    }
+    let newLightness = currentLightness + 0.1;
+    event.target.style.filter = `brightness(${newLightness})`;
   }
 }
 colorPick.addEventListener(`click`, changeColor);
@@ -72,6 +82,9 @@ randomBtn.addEventListener(`click`, () =>
   setActiveButton(randomBtn, "rainbow")
 );
 darkenBtn.addEventListener("click", () => setActiveButton(darkenBtn, "darken"));
+lightenBtn.addEventListener("click", () =>
+  setActiveButton(lightenBtn, "lighten")
+);
 
 function changeGridSize() {
   size = prompt(`Enter a grid size:`);
