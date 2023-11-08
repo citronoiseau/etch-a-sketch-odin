@@ -8,9 +8,10 @@ const gridSizeBtn = document.querySelector(`.gridSizeChoose`);
 const drawBtn = document.querySelector(`#colorMode`);
 const eraseBtn = document.querySelector(`#eraserMode`);
 const randomBtn = document.querySelector(`#randomMode`);
+const darkenBtn = document.querySelector(`#darkenMode`);
+const buttons = [drawBtn, eraseBtn, randomBtn, darkenBtn];
 
-let isDrawing = true;
-let isRandomColor = false;
+let drawingMode = "drawing";
 
 function createGrid() {
   for (let i = 0; i < size * size; i++) {
@@ -29,45 +30,49 @@ function createGrid() {
 }
 
 function changeColor(event) {
-  if (isDrawing) {
-    let color = document.querySelector(".colorPick").value;
+  let color = document.querySelector(".colorPick").value;
+  if (drawingMode === "drawing") {
     event.target.style.backgroundColor = color;
-  } else if (isRandomColor) {
+    event.target.style.filter = "";
+  } else if (drawingMode === "rainbow") {
     let randomColor = Math.floor(Math.random() * 16777215).toString(16);
     event.target.style.backgroundColor = "#" + randomColor;
-  } else {
+    event.target.style.filter = "";
+  } else if (drawingMode === "erasing") {
     event.target.style.backgroundColor = null;
+  } else if (drawingMode === "darken") {
+    let currentDarkness;
+    if (event.target.style.filter) {
+      currentDarkness = parseFloat(event.target.style.filter.slice(11, -1));
+    } else {
+      currentDarkness = 1;
+    }
+    let newDarkness = currentDarkness - 0.1;
+    if (newDarkness < 0) {
+      newDarkness = 0;
+    }
+    event.target.style.filter = `brightness(${newDarkness})`;
   }
 }
 colorPick.addEventListener(`click`, changeColor);
 
-function activeDrawBtn() {
-  drawBtn.classList.add("active");
-  eraseBtn.classList.remove("active");
-  randomBtn.classList.remove("active");
-  isRandomColor = false;
-  isDrawing = true;
+function setActiveButton(clickedBtn, mode) {
+  buttons.forEach((btn) => {
+    if (btn === clickedBtn) {
+      btn.classList.add("active");
+    } else {
+      btn.classList.remove("active");
+    }
+  });
+  drawingMode = mode;
 }
-drawBtn.addEventListener(`click`, activeDrawBtn);
+drawBtn.addEventListener(`click`, () => setActiveButton(drawBtn, "drawing"));
+eraseBtn.addEventListener(`click`, () => setActiveButton(eraseBtn, "erasing"));
+randomBtn.addEventListener(`click`, () =>
+  setActiveButton(randomBtn, "rainbow")
+);
+darkenBtn.addEventListener("click", () => setActiveButton(darkenBtn, "darken"));
 
-function activeEraseBtn() {
-  drawBtn.classList.remove("active");
-  randomBtn.classList.remove("active");
-  eraseBtn.classList.add("active");
-  isDrawing = false;
-  isRandomColor = false;
-}
-eraseBtn.addEventListener(`click`, activeEraseBtn);
-
-function activeRandomBtn() {
-  drawBtn.classList.remove("active");
-  eraseBtn.classList.remove("active");
-  randomBtn.classList.add("active");
-  isDrawing = false;
-  isRandomColor = true;
-}
-
-randomBtn.addEventListener(`click`, activeRandomBtn);
 function changeGridSize() {
   size = prompt(`Enter a grid size:`);
   if (size === null || size === "") {
