@@ -4,6 +4,7 @@ let size = 16;
 const resetBtn = document.querySelector(`.reset-button`);
 const colorPick = document.querySelector(`.colorPick`);
 const gridSizeBtn = document.querySelector(`.gridSizeChoose`);
+const toggleBgBtn = document.querySelector(`.toggle-border`);
 
 const drawBtn = document.querySelector(`#colorMode`);
 const eraseBtn = document.querySelector(`#eraserMode`);
@@ -16,16 +17,19 @@ let drawingMode = "drawing";
 
 function createGrid() {
   for (let i = 0; i < size * size; i++) {
-    const divElement = document.createElement(`div`);
-    divElement.classList.add(`element`);
-    divElement.style.flexBasis = `${100 / size}%`;
-    divElement.style.height = `${100 / size}%`;
-    gridContainer.appendChild(divElement);
+    const gridElement = document.createElement(`div`);
+    gridElement.classList.add(`gridElement`);
+    gridElement.style.flexBasis = `${100 / size}%`;
+    gridElement.style.height = `${100 / size}%`;
+    gridContainer.appendChild(gridElement);
 
-    divElement.addEventListener("mouseover", function (event) {
+    gridElement.addEventListener("mouseover", function (event) {
       if (event.buttons === 1) {
         changeColor(event);
       }
+    });
+    toggleBgBtn.addEventListener("click", function () {
+      gridElement.classList.toggle("toggleBorder");
     });
   }
 }
@@ -64,7 +68,6 @@ function changeColor(event) {
     event.target.style.filter = `brightness(${newLightness})`;
   }
 }
-colorPick.addEventListener(`click`, changeColor);
 
 function setActiveButton(clickedBtn, mode) {
   buttons.forEach((btn) => {

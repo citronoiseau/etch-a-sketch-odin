@@ -5,15 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Silkscreen&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <h1>Etch-A-Sketch!</h1>
+    <button class="gridSizeChoose">Choose your grid size!</button>
     <div class="menu">
       <div class="grid-container"></div>
       <div class="controls-container">
-        <button class="gridSizeChoose">Choose your grid size!</button>
-        <input class="colorPick" type="color" />
-        <button class="reset-button">Reset!</button>
+        <input type="color" class="colorPick" value="#FFA53D" />
         <button id="colorMode" class="active">Color</button>
         <button id="eraserMode">Erase</button>
         <button id="randomMode">Randomize!</button>
@@ -21,6 +26,8 @@
         <button id="lightenMode">Lighten!</button>
       </div>
     </div>
+    <button class="reset-button">Reset!</button>
+    <button class="toggle-border">Toggle Grid Border</button>
 
     <script src="script.js"></script>
   </body>
