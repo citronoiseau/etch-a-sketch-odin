@@ -8,26 +8,31 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Silkscreen&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
     <h1>Etch-A-Sketch!</h1>
-    <button class="gridSizeChoose">Choose your grid size!</button>
+
     <div class="menu">
-      <div class="grid-container"></div>
-      <div class="controls-container">
-        <input type="color" class="colorPick" value="#FFA53D" />
-        <button id="colorMode" class="active">Color</button>
-        <button id="eraserMode">Erase</button>
-        <button id="randomMode">Randomize!</button>
-        <button id="darkenMode">Darken!</button>
-        <button id="lightenMode">Lighten!</button>
+      <div class="grid-controls">
+        <button class="gridSizeChoose">Choose your grid size!</button>
+        <div class="grid-color-controls">
+          <div class="grid-container"></div>
+          <div class="colorBtns">
+            <input type="color" class="colorPick" value="#FFA53D" />
+            <button id="colorMode" class="active">Color</button>
+            <button id="eraserMode">Erase</button>
+            <button id="randomMode">Randomize!</button>
+            <button id="darkenMode">Darken!</button>
+            <button id="lightenMode">Lighten!</button>
+          </div>
+        </div>
+        <button class="reset-button">Reset!</button>
+        <button class="toggle-border">Toggle Grid Border</button>
       </div>
     </div>
-    <button class="reset-button">Reset!</button>
-    <button class="toggle-border">Toggle Grid Border</button>
 
     <script src="script.js"></script>
   </body>
