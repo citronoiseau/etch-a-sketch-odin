@@ -21,6 +21,7 @@ h1 {
 
 .grid-color-controls {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .colorBtns {
@@ -87,4 +88,39 @@ button:active {
 }
 .active {
   background-color: #ff6161;
+}
+@media (max-width: 767px) {
+  h1 {
+    font-size: 20px;
+  }
+  .grid-container {
+    width: 300px;
+    height: 300px;
+  }
+  .gridSizeChoose {
+    display: block;
+    margin: 0px auto;
+  }
+
+  .reset-button,
+  .toggle-border {
+    display: block;
+    margin: 20px auto;
+  }
+
+  .grid-color-controls {
+    justify-content: center;
+  }
+  .colorBtns {
+    gap: 10px;
+  }
+  .colorPick {
+    display: block;
+    margin: 0 auto;
+  }
+  button {
+    font-size: 9px;
+    margin-left: 0;
+    padding: 15px 65px;
+  }
 }
