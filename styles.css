@@ -1,5 +1,5 @@
 body {
-  background-color: #efefef;
+  background-image: url("../images/background.svg");
 }
 h1 {
   margin: 5px;
@@ -8,14 +8,14 @@ h1 {
   font-size: 50px;
 }
 .menu {
-  background-color: #f7f6f6;
+  background-color: #f7f6f65c;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   margin: 30px auto;
   max-width: 800px;
   padding: 20px;
-  border: 3px solid #ababab;
+  border: 3px dashed #ababab;
   border-radius: 24px;
 }
 
