@@ -89,8 +89,21 @@ button:active {
 .active {
   background-color: #ff6161;
 }
+.footer {
+  text-align: center;
+  font-family: "Silkscreen", sans-serif;
+  font-size: 24px;
+}
+.footer a {
+  color: #772b2b;
+  transition: all 0.3s ease;
+}
+.footer a:hover {
+  color: #ff6161;
+}
 @media (max-width: 767px) {
-  h1 {
+  h1,
+  .footer {
     font-size: 20px;
   }
   .grid-container {
