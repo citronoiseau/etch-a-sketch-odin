@@ -17,7 +17,20 @@
 
     <div class="menu">
       <div class="grid-controls">
-        <button class="gridSizeChoose">Choose your grid size!</button>
+        <div class="grid-size-controls">
+          <button class="gridSizeChoose">Choose your grid size!</button>
+          <div class="slider-container">
+            <p class="grid-size-value"></p>
+            <input
+              type="range"
+              min="1"
+              max="100"
+              value="16"
+              class="slider"
+              id="slider"
+            />
+          </div>
+        </div>
         <div class="grid-color-controls">
           <div class="grid-container"></div>
           <div class="colorBtns">

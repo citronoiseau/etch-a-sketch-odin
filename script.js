@@ -13,6 +13,10 @@ const darkenBtn = document.querySelector(`#darkenMode`);
 const lightenBtn = document.querySelector(`#lightenMode`);
 const buttons = [drawBtn, eraseBtn, randomBtn, darkenBtn, lightenBtn];
 
+const slider = document.querySelector("#slider");
+const output = document.querySelector(".grid-size-value");
+output.textContent = `${size} x ${size} `;
+
 let drawingMode = "drawing";
 
 function createGrid() {
@@ -110,4 +114,12 @@ function resetGrid() {
 }
 resetBtn.addEventListener(`click`, resetGrid);
 
+function changeGridSize() {
+  size = slider.value;
+  output.textContent = `${size} x ${size} `;
+}
+slider.addEventListener(`input`, changeGridSize);
+slider.addEventListener("mouseup", function () {
+  resetGrid();
+});
 createGrid();
