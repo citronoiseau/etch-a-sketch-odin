@@ -114,11 +114,11 @@ function resetGrid() {
 }
 resetBtn.addEventListener(`click`, resetGrid);
 
-function changeGridSize() {
+function changeGridSizeSlider() {
   size = slider.value;
   output.textContent = `${size} x ${size} `;
 }
-slider.addEventListener(`input`, changeGridSize);
+slider.addEventListener(`input`, changeGridSizeSlider);
 slider.addEventListener("mouseup", function () {
   resetGrid();
 });
