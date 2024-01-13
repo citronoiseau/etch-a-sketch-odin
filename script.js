@@ -102,6 +102,8 @@ function changeGridSize() {
   } else if (size < 1) {
     alert(`It's too small, enter another size!`);
   } else {
+    output.textContent = `${size} x ${size} `;
+    slider.value = size;
     resetGrid();
   }
 }
